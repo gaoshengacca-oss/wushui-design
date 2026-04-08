@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>午睡 WUSHUI | 蓄力，为了更极致的爆发</title>
+    <style>
+        :root {
+            --primary: #2D3E50; /* 安神蓝 */
+            --bg: #F5F5F0;      /* 奶油白 */
+            --accent: #FDD835;  /* 灵感黄 */
+        }
+        
+        body, html {
+            margin: 0; padding: 0; height: 100%;
+            background-color: var(--bg);
+            font-family: 'PingFang SC', sans-serif;
+            display: flex; align-items: center; justify-content: center;
+            overflow: hidden;
+        }
+
+        .container { text-align: center; opacity: 0; animation: fadeIn 2s forwards; }
+
+        .logo-box {
+            font-size: 4rem; font-weight: 200; letter-spacing: 15px;
+            color: var(--primary); margin-bottom: 20px;
+            position: relative;
+        }
+
+        /* 模拟午睡时的呼吸感 */
+        .logo-box::after {
+            content: ''; position: absolute; bottom: -10px; left: 50%;
+            width: 50px; height: 2px; background: var(--accent);
+            transform: translateX(-50%);
+            animation: breathe 4s infinite ease-in-out;
+        }
+
+        .slogan {
+            font-size: 1.2rem; color: #888; letter-spacing: 5px;
+            margin-top: 30px; font-weight: 300;
+        }
+
+        .contact-btn {
+            margin-top: 50px; padding: 12px 30px;
+            border: 1px solid var(--primary); color: var(--primary);
+            text-decoration: none; font-size: 0.8rem; letter-spacing: 2px;
+            transition: all 0.3s; cursor: pointer;
+        }
+
+        .contact-btn:hover {
+            background: var(--primary); color: white;
+        }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes breathe {
+            0%, 100% { width: 30px; opacity: 0.3; }
+            50% { width: 100px; opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo-box">午睡</div>
+        <div class="slogan">蓄力，为了更极致的爆发</div>
+        <p style="color:#bbb; font-size: 0.8rem; margin-top: 10px;">WUSHUI VISUAL DESIGN STUDIO</p>
+        <br><br>
+        <a href="mailto:yourname@example.com" class="contact-btn">获取灵感方案</a>
+    </div>
+</body>
+</html>
