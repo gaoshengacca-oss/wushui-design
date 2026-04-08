@@ -56,10 +56,10 @@
     .section-title { font-size: 0.8rem; letter-spacing: 4px; color: var(--accent); margin-bottom: 50px; text-align: center; }
 
     .grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 25px; }
-    .card { position: relative; border-radius: 4px; overflow: hidden; background-color: #161b22; cursor: zoom-in; transition: var(--transition); }
+    .card { position: relative; border-radius: 4px; overflow: hidden; background-color: #1a1f26; cursor: zoom-in; transition: var(--transition); }
     .card:hover { transform: translateY(-8px); box-shadow: 0 25px 50px rgba(0,0,0,0.6); }
 
-    /* 错落布局逻辑 */
+    /* 响应式布局：PC端错落有致 */
     .item-1 { grid-column: span 7; height: 450px; }
     .item-2 { grid-column: span 5; height: 450px; }
     .item-3 { grid-column: span 4; height: 350px; }
@@ -71,8 +71,12 @@
     .item-9 { grid-column: span 4; height: 300px; }
     .item-10 { grid-column: span 4; height: 300px; }
 
-    .card img { width: 100%; height: 100%; object-fit: cover; transition: var(--transition); opacity: 0.85; }
-    .card:hover img { transform: scale(1.05); opacity: 1; }
+    .card img { 
+      width: 100%; height: 100%; object-fit: cover; 
+      transition: opacity 0.8s ease-in; opacity: 0; 
+    }
+    .card img.loaded { opacity: 0.85; }
+    .card:hover img.loaded { transform: scale(1.05); opacity: 1; }
 
     .card-info {
       position: absolute; bottom: 0; left: 0; width: 100%; padding: 25px;
@@ -98,25 +102,19 @@
 
     @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
 
-    /* --- Lightbox (点击放大) --- */
+    /* --- Lightbox --- */
     #lightbox {
       position: fixed; top:0; left:0; width:100%; height:100%;
-      background: rgba(0, 0, 0, 0.75); /* 背景变暗 */
-      backdrop-filter: blur(15px);     /* 背景模糊 */
-      -webkit-backdrop-filter: blur(15px);
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
       display:none; justify-content:center; align-items:center; z-index:9999;
-      cursor: zoom-out;
-      opacity: 0;
-      transition: opacity 0.3s ease-out;
+      cursor: zoom-out; opacity: 0; transition: opacity 0.3s ease-out;
     }
     #lightbox.visible { opacity: 1; }
     #lightbox img {
       max-width: 95%; max-height: 85%;
-      border-radius: 2px;
-      box-shadow: 0 0 60px rgba(0,0,0,0.8);
-      cursor: default;
-      transform: scale(0.95);
-      opacity: 0;
+      border-radius: 2px; box-shadow: 0 0 60px rgba(0,0,0,0.8);
+      transform: scale(0.95); opacity: 0;
       transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
     #lightbox.visible img { transform: scale(1); opacity: 1; }
@@ -146,44 +144,44 @@
   <section class="works">
     <div class="section-title">SELECTED WORKS / 精选案例</div>
     <div class="grid">
-      <div class="card item-1" onclick="openLbox('p1.jpg')">
-        <img src="p1.jpg">
+      <div class="card item-1" onclick="openLbox('p1.webp')">
+        <img src="p1.webp" loading="lazy" decoding="async" onload="this.classList.add('loaded')">
         <div class="card-info"><h3>石头科技 RockMow</h3><p>3D DYNAMICS / TVC</p></div>
       </div>
-      <div class="card item-2" onclick="openLbox('p2.jpg')">
-        <img src="p2.jpg">
+      <div class="card item-2" onclick="openLbox('p2.webp')">
+        <img src="p2.webp" loading="lazy" decoding="async" onload="this.classList.add('loaded')">
         <div class="card-info"><h3>泡泡玛特 13周年</h3><p>CHARACTER / IP DESIGN</p></div>
       </div>
-      <div class="card item-3" onclick="openLbox('p3.jpg')">
-        <img src="p3.jpg">
+      <div class="card item-3" onclick="openLbox('p3.webp')">
+        <img src="p3.webp" loading="lazy" decoding="async" onload="this.classList.add('loaded')">
         <div class="card-info"><h3>美团闪购 x iPhone17</h3><p>KEY VISUAL</p></div>
       </div>
-      <div class="card item-4" onclick="openLbox('p4.jpg')">
-        <img src="p4.jpg">
+      <div class="card item-4" onclick="openLbox('p4.webp')">
+        <img src="p4.webp" loading="lazy" decoding="async" onload="this.classList.add('loaded')">
         <div class="card-info"><h3>美团闪购 x 小米17</h3><p>BRANDING VISUAL</p></div>
       </div>
-      <div class="card item-5" onclick="openLbox('p5.jpg')">
-        <img src="p5.jpg">
+      <div class="card item-5" onclick="openLbox('p5.webp')">
+        <img src="p5.webp" loading="lazy" decoding="async" onload="this.classList.add('loaded')">
         <div class="card-info"><h3>农夫山泉原豆奶茶</h3><p>PRODUCT DESIGN</p></div>
       </div>
-      <div class="card item-6" onclick="openLbox('p6.jpg')">
-        <img src="p6.jpg">
+      <div class="card item-6" onclick="openLbox('p6.webp')">
+        <img src="p6.webp" loading="lazy" decoding="async" onload="this.classList.add('loaded')">
         <div class="card-info"><h3>荣耀 OS10.0 UX</h3><p>INTERACTION MOTION</p></div>
       </div>
-      <div class="card item-7" onclick="openLbox('p7.jpg')">
-        <img src="p7.jpg">
+      <div class="card item-7" onclick="openLbox('p7.webp')">
+        <img src="p7.webp" loading="lazy" decoding="async" onload="this.classList.add('loaded')">
         <div class="card-info"><h3>美团外卖年货节</h3><p>MARKETING CAMPAIGN</p></div>
       </div>
-      <div class="card item-8" onclick="openLbox('p8.jpg')">
-        <img src="p8.jpg">
+      <div class="card item-8" onclick="openLbox('p8.webp')">
+        <img src="p8.webp" loading="lazy" decoding="async" onload="this.classList.add('loaded')">
         <div class="card-info"><h3>美团 520 AIGC</h3><p>AI EXPERIMENT</p></div>
       </div>
-      <div class="card item-9" onclick="openLbox('p9.jpg')">
-        <img src="p9.jpg">
+      <div class="card item-9" onclick="openLbox('p9.webp')">
+        <img src="p9.webp" loading="lazy" decoding="async" onload="this.classList.add('loaded')">
         <div class="card-info"><h3>美团外卖 MARS</h3><p>FESTIVAL VISUAL</p></div>
       </div>
-      <div class="card item-10" onclick="openLbox('p10.jpg')">
-        <img src="p10.jpg">
+      <div class="card item-10" onclick="openLbox('p10.webp')">
+        <img src="p10.webp" loading="lazy" decoding="async" onload="this.classList.add('loaded')">
         <div class="card-info"><h3>科技品牌视觉研究</h3><p>VISION & MISSION</p></div>
       </div>
     </div>
